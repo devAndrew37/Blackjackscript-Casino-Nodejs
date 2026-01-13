@@ -26,9 +26,9 @@ async function getRecords() {
   const res = await sheets.spreadsheets.values.get({
     auth: client,
     spreadsheetId,
-    range: 'Sheet1!A:B',
+    range: 'Sheet1!A:C',
   });
-  return res.data.values; // Array de arrays: [[nombre, score], ...]
+  return res.data.values; // Array de arrays: [[nombre, score, money], ...]
 }
 
 module.exports = { addRecord, getRecords };
