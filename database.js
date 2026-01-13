@@ -8,13 +8,4 @@ db.exec(`
   )
 `);
 
-const rowCount = db.prepare('SELECT COUNT(*) AS count FROM records').get().count;
-if (rowCount === 0) {
-db.exec(`
- INSERT INTO records (name, record)
- VALUES
- ('Torrente', 300000),
- ('Pepito', 80000)
-`);
-}
 module.exports = db;
