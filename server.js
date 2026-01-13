@@ -22,10 +22,11 @@ app.post('/api/record', async (req, res) => {
 
 app.get('/api/records', async (req, res) => {
   const records = await getRecords();
+  console.log(records);
   res.json(records);
 });
 
-app.get('/showrecords', (req, res) => {
+/*app.get('/showrecords', (req, res) => {
   try {
     const highRecords = db.prepare('SELECT * FROM records ORDER BY record DESC');
     const showRecords = highRecords.all();
@@ -50,4 +51,4 @@ app.post('/leavecasino', (req, res) => {
   res.status(201).json({
     noteId: result.lastInsertRowid
   });
-});
+});*/               // funciones agregadas en el previo base de datos de sqlite3
