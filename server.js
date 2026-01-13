@@ -5,7 +5,6 @@ const db = require('./database');
 const port = 1000;
 
 const { addRecord, getRecords } = require('./database');
-addRecord('Andres', 1000);
 
 app.use(express.json());
 app.use(cors());
@@ -13,6 +12,17 @@ app.use(express.static('public'));
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+app.post('/api/record', async (req, res) => {
+  const { name, score } = req.body;
+  await addRecord(name, score);
+  res.json({ success: true });
+});
+
+app.get('/api/records', async (req, res) => {
+  const records = await getRecords();
+  res.json(records);
 });
 
 app.get('/showrecords', (req, res) => {
@@ -40,15 +50,4 @@ app.post('/leavecasino', (req, res) => {
   res.status(201).json({
     noteId: result.lastInsertRowid
   });
-});
-
-app.post('/api/record', async (req, res) => {
-  const { name, score } = req.body;
-  await addRecord(name, score);
-  res.json({ success: true });
-});
-
-app.get('/api/records', async (req, res) => {
-  const records = await getRecords();
-  res.json(records);
 });
