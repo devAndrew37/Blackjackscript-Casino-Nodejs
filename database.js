@@ -11,7 +11,7 @@ db.exec(`
 `);
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: 'creds.json', // Ruta del Secret File en Render
+  keyFile: '/etc/creds.json', // Ruta del Secret File en Render
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
