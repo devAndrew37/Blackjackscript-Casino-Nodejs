@@ -13,6 +13,10 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
+app.get('/api/ping', (req, res) => {
+  res.send('pong');
+});
+
 app.post('/api/record', async (req, res) => {
   const { name, score } = req.body;
   await addRecord(name, score);
