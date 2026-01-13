@@ -21,7 +21,7 @@ app.post('/api/record', async (req, res) => {
 
 app.get('/api/records', async (req, res) => {
   const records = await getRecords();
-  console.log(records);
+  records.sort((a, b) => b[1] - a[1]);
   res.json(records);
 });
 
