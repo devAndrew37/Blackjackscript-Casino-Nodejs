@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const db = require('./database');
 const port = 1000;
 
 const { addRecord, getRecords } = require('./database');

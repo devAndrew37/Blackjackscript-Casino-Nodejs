@@ -1,14 +1,5 @@
-const Database = require('better-sqlite3');
-const db = new Database("records.db");
 const { google } = require('googleapis');
 const path = require('path');
-
-db.exec(`
-  CREATE TABLE IF NOT EXISTS records (
-  name TEXT NOT NULL,
-  record INT NOT NULL
-  )
-`);
 
 const auth = new google.auth.GoogleAuth({
   keyFile: '/etc/secrets/creds.json', // Ruta del Secret File en Render
@@ -40,4 +31,4 @@ async function getRecords() {
   return res.data.values; // Array de arrays: [[nombre, score], ...]
 }
 
-module.exports = { db, addRecord, getRecords };
+module.exports = { addRecord, getRecords };
