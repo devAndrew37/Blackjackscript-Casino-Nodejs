@@ -25,6 +25,9 @@ app.post('/api/record', async (req, res) => {
 
 app.get('/api/records', async (req, res) => {
   const records = await getRecords();
+  if (!records || records.length === 0) {
+    return res.json([]); // Devuelve un array vacío si no hay records
+  }
   records.sort((a, b) => b[1] - a[1]);
   res.json(records);
 });
